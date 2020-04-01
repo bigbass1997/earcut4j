@@ -7,7 +7,7 @@ import java.util.List;
 public final class Earcut {
 
     private Earcut() {
-    };
+    }
 
     /**
      * Triangulates the given polygon
@@ -15,7 +15,7 @@ public final class Earcut {
      * @param data is a flat array of vertice coordinates like [x0,y0, x1,y1, x2,y2, ...].
      * @return List containing groups of three vertice indices in the resulting array forms a triangle.
      */
-    public static List<Integer> earcut(double[] data) {
+    public static List<Integer> earcut(float[] data) {
         return earcut(data, null, 2);
     }
     
@@ -23,11 +23,11 @@ public final class Earcut {
      * Triangulates the given polygon
      * 
      * @param data is a flat array of vertice coordinates like [x0,y0, x1,y1, x2,y2, ...].
-     * @param holeIndices is an array of hole indices if any (e.g. [5, 8] for a 12-vertice input would mean one hole with vertices 5–7 and another with 8–11).
+     * @param holeIndices is an array of hole indices if any (e.g. [5, 8] for a 12-vertice input would mean one hole with vertices 5-7 and another with 8-11).
      * @param dim  is the number of coordinates per vertice in the input array
      * @return List containing groups of three vertice indices in the resulting array forms a triangle.
      */
-    public static List<Integer> earcut(double[] data, int[] holeIndices, int dim) {
+    public static List<Integer> earcut(float[] data, int[] holeIndices, int dim) {
 
         boolean hasHoles = holeIndices != null && holeIndices.length > 0;
         int outerLen = hasHoles ? holeIndices[0] * dim : data.length;
@@ -369,7 +369,7 @@ public final class Earcut {
         return list;
     }
 
-    private static Node eliminateHoles(double[] data, int[] holeIndices, Node outerNode, int dim) {
+    private static Node eliminateHoles(float[] data, int[] holeIndices, Node outerNode, int dim) {
         List<Node> queue = new ArrayList<>();
 
         int len = holeIndices.length;
@@ -551,7 +551,7 @@ public final class Earcut {
         return leftmost;
     }
 
-    private static Node linkedList(double[] data, int start, int end, int dim, boolean clockwise) {
+    private static Node linkedList(float[] data, int start, int end, int dim, boolean clockwise) {
         Node last = null;
         if (clockwise == (signedArea(data, start, end, dim) > 0)) {
             for (int i = start; i < end; i += dim) {
@@ -597,7 +597,7 @@ public final class Earcut {
         return p;
     }
 
-    private static double signedArea(double[] data, int start, int end, int dim) {
+    private static double signedArea(float[] data, int start, int end, int dim) {
         double sum = 0;
         int j = end - dim;
         for (int i = start; i < end; i += dim) {
