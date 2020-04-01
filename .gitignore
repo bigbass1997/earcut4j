@@ -3,3 +3,6 @@ build
 .idea/
 .classpath
 .project
+/earcut4j.iml
+/earcut4j.ipr
+/earcut4j.iws

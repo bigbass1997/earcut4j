@@ -17,9 +17,9 @@ dependencies {
 }
 
 group = 'earcut4j'
-version = '2.1.1'
+version = '2.1.2'
 description = 'earcut4j'
-sourceCompatibility = '1.7'
+sourceCompatibility = '1.8'
 
 publishing {
 	repositories {
