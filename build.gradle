@@ -1,0 +1,41 @@
+plugins {
+    id 'java-library'
+	id 'eclipse'
+	id 'idea'
+	id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'http://repo.maven.apache.org/maven2'
+    }
+}
+
+dependencies {
+    compile 'junit:junit:4.12'
+}
+
+group = 'earcut4j'
+version = '2.1.1'
+description = 'earcut4j'
+sourceCompatibility = '1.7'
+
+publishing {
+	repositories {
+		maven {
+			name = 'GitHubPackages'
+			url = 'https://maven.pkg.github.com/bigbass1997/earcut4j'
+			credentials {
+				username = ''
+				password = ''
+			}
+		}
+	}
+	
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
